@@ -1,6 +1,6 @@
 import User from '../typeorm/entities/User';
 import UsersRepo from '../typeorm/repositories/UsersRepo';
-import AppError from '@shared/error/AppError';
+import AppError from '@shared/errors/AppError';
 
 interface IRequest {
   name: string;

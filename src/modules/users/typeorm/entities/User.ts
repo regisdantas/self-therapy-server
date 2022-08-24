@@ -21,4 +21,4 @@ class User {
   updatedAt: Date;
 }
 
-export default class User;
+export default User;
