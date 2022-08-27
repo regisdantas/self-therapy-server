@@ -1,6 +1,7 @@
+import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 
-export const dataSource = new DataSource({
+const dataSource = new DataSource({
   migrationsTableName: 'migrations',
   type: 'postgres',
   host: 'localhost',
@@ -14,11 +15,6 @@ export const dataSource = new DataSource({
   entities: ['./src/modules/**/typeorm/entities/*.ts'],
 });
 
-dataSource
-  .initialize()
-  .then(() => {
-    console.log('Data Source has been initialized!');
-  })
-  .catch(err => {
-    console.error('Error during Data Source initialization', err);
-  });
+dataSource.initialize();
+
+export default dataSource;
