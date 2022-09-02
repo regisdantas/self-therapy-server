@@ -28,8 +28,8 @@ configs = {
     url: process.env.DATABASE_URL as string,
     synchronize: true,
     logging: true,
-    migrations: ['./src/shared/typeorm/migrations/*.ts'],
-    entities: ['./src/modules/**/typeorm/entities/*.ts'],
+    entities: [`${process.env.DATABASE_ENTITIES}`],
+    migrations: [`${process.env.DATABASE_MIGRATIONS}`],
     ssl: {
       rejectUnauthorized: false
     },

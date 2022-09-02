@@ -5,7 +5,7 @@
   "main": "build/shared/http/server.js",
   "scripts": {
     "start": "node build/shared/http/server.js",
-    "postinstall": "tsc && rm -v -rf src",
+    "postinstall": "tsc && rm -v -rf src && npm run migration:up",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts",
     "lint": "eslint . --ext .ts",
