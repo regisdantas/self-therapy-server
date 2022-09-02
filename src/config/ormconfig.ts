@@ -11,14 +11,11 @@ let configs: DataSourceOptions = {
   port: 5432,
   username: 'postgres',
   password: 'docker',
-  database: 'selftherapy',
+  database: 'postgres',
   synchronize: true,
   logging: true,
   migrations: ['./src/shared/typeorm/migrations/*.ts'],
   entities: ['./src/modules/**/typeorm/entities/*.ts'],
-  ssl: {
-    rejectUnauthorized: false
-  },
 }
 
 if (process.env.DATABASE_URL) {

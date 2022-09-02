@@ -11,6 +11,7 @@ const StepsRepo = dataSource.getRepository(Step).extend({
     return steps;
   },
   findByProjectId: async function (project_id: string): Promise<Step[]> {
+    console.log("Find: ", project_id);
     const steps = await this.find({where: {project_id}});
     return steps;
   },

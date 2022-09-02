@@ -2,10 +2,10 @@ import { Router } from 'express';
 import StepsController from '../controllers/StepsController';
 import {celebrate, Joi, Segments} from 'celebrate'
 
-const projectsRouter = Router();
-const projectsController = new StepsController();
+const stepsRouter = Router();
+const stepsController = new StepsController();
 
-projectsRouter.post('/',
+stepsRouter.post('/',
 celebrate({
   [Segments.BODY]: {
     project_id: Joi.string().required(),
@@ -14,8 +14,10 @@ celebrate({
     content: Joi.string()
   }
 }),
-projectsController.create);
+stepsController.create);
 
-// projectsRouter.get('/', projectsController.list);
+stepsRouter.get('/',
+celebrate({ [Segments.QUERY]: { project_id: Joi.string().uuid().required() } }),
+stepsController.list);
 
-export default projectsRouter;
+export default stepsRouter;

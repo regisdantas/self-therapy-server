@@ -16,13 +16,13 @@ class Step {
   @Column()
   project_id: string;
 
-  @Column({nullable: true})
+  @Column()
   parent_id: string;
 
   @Column()
   type: string;
 
-  @Column({nullable: true})
+  @Column({nullable: true, type: 'varchar'})
   content: string;
 
   @CreateDateColumn()
