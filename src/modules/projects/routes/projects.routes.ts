@@ -5,6 +5,8 @@ import {celebrate, Joi, Segments} from 'celebrate'
 const projectsRouter = Router();
 const projectsController = new ProjectsController();
 
+projectsRouter.get('/', projectsController.list);
+
 projectsRouter.post('/',
 celebrate({
   [Segments.BODY]: {
@@ -13,6 +15,13 @@ celebrate({
 }),
 projectsController.create);
 
-projectsRouter.get('/', projectsController.list);
+projectsRouter.delete('/',
+celebrate({
+  [Segments.BODY]: {
+    project_id: Joi.string().uuid().required()
+  }
+}),
+projectsController.delete);
+
 
 export default projectsRouter;

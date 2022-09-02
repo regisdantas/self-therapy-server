@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import CreateProjectService from '../services/CreateProjectService';
 import ListProjectsService from '../services/ListProjectsService';
+import CreateProjectService from '../services/CreateProjectService';
+import DeleteProjectService from '../services/DeleteProjectService';
 
 
 class ProjectsController {
@@ -15,6 +16,13 @@ class ProjectsController {
     const project = await createProject.execute({user_id: req.user.id, name});
     return resp.json(project);
   }
+  public async delete(req: Request, resp: Response): Promise<Response> {
+    const {project_id} = req.body;
+    const deleteProject = new DeleteProjectService();
+    await deleteProject.execute({user_id: req.user.id, project_id});
+    return resp.json({message: "Project removed"});
+  }
+
 }
 
 export default ProjectsController;
