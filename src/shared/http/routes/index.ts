@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import usersRouter from '@modules/users/routes/users.routes'
-import sessionsRouter from '@modules/users/routes/sessions.routes'
-import projectsRouter from '@modules/projects/routes/projects.routes'
-import stepsRouter from '@modules/steps/routes/steps.routes'
+import usersRouter from '../../../modules/users/routes/users.routes'
+import sessionsRouter from '../../../modules/users/routes/sessions.routes'
+import projectsRouter from '../../../modules/projects/routes/projects.routes'
+import stepsRouter from '../../../modules/steps/routes/steps.routes'
 import isAuthenticated from '../middlewares/isAuthenticated';
 
 const routes = Router();

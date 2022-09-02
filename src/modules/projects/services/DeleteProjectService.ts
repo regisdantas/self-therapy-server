@@ -1,6 +1,6 @@
 import Project from "../typeorm/entities/Project";
 import ProjectsRepo from "../typeorm/repositories/ProjectsRepo";
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
 interface IRequest {
   project_id: string;

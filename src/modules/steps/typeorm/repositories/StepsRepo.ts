@@ -1,5 +1,5 @@
 import Step from '../entities/Step'
-import dataSource from '@config/ormconfig'
+import dataSource from '../../../../config/ormconfig'
 
 const StepsRepo = dataSource.getRepository(Step).extend({
   findById: async function (id: string): Promise<Step|null> {

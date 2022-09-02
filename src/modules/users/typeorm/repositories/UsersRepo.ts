@@ -1,5 +1,5 @@
 import User from '../entities/User';
-import dataSource from '@config/ormconfig';
+import dataSource from '../../../../config/ormconfig';
 
 const UsersRepo = dataSource.getRepository(User).extend({
   findByName: async function (name: string): Promise<User|null> {

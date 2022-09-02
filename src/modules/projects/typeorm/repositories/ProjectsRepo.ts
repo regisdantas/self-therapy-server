@@ -1,5 +1,5 @@
 import Project from '../entities/Project'
-import dataSource from '@config/ormconfig'
+import dataSource from '../../../../config/ormconfig'
 
 const ProjectsRepo = dataSource.getRepository(Project).extend({
   findById: async function (id: string): Promise<Project|null> {

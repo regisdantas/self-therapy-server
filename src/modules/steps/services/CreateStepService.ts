@@ -1,8 +1,8 @@
-import AppError from '@shared/errors/AppError'
+import AppError from '../../../shared/errors/AppError'
 import Step from '../typeorm/entities/Step';
 import StepsRepo from '../typeorm/repositories/StepsRepo';
-import UsersRepo from '@modules/users/typeorm/repositories/UsersRepo';
-import ProjectsRepo from "@modules/projects/typeorm/repositories/ProjectsRepo";
+import UsersRepo from '../../../modules/users/typeorm/repositories/UsersRepo';
+import ProjectsRepo from "../../../modules/projects/typeorm/repositories/ProjectsRepo";
 
 interface IRequest {
   user_id: string;
