@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 import dotenv from 'dotenv'
 
 dotenv.config();
@@ -16,17 +16,20 @@ let configs = {
   logging: true,
   migrations: ['./src/shared/typeorm/migrations/*.ts'],
   entities: ['./src/modules/**/typeorm/entities/*.ts'],
+  extra: {
+    ssl: true
+  }
 }
 
 if (process.env.DATABASE_URL) {
 configs = {
     migrationsTableName: 'migrations',
     type: 'postgres',
-    host: process.env.DATABASE_HOST,
-    port: process.env.DATABASE_PORT || 5432,
-    username: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_DB,
+    host: process.env.DATABASE_HOST as string,
+    port: parseInt(process.env.DATABASE_PORT as string) || 5432,
+    username: process.env.DATABASE_USER as string,
+    password: process.env.DATABASE_PASSWORD as string,
+    database: process.env.DATABASE_DB as string,
     synchronize: true,
     logging: true,
     migrations: ['./src/shared/typeorm/migrations/*.ts'],
@@ -37,9 +40,7 @@ configs = {
   };
 }
 
-console.log(configs);
-
-const dataSource = new DataSource(configs);
+const dataSource = new DataSource(configs as DataSourceOptions);
 
 dataSource.initialize();
 
