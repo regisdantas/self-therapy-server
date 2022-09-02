@@ -10,7 +10,7 @@ interface IRequest {
 class DeleteProjectService {
   public async execute ({project_id, user_id}: IRequest): Promise<void> {
     const projects = await ProjectsRepo.find({where: {id: project_id, user_id: user_id}});
-    if (!projects || projects.lenght === 0) {
+    if (!projects || projects.length === 0) {
       throw new AppError('Project not found.');
     }
     projects.map((project: Project) => ProjectsRepo.remove(project));
