@@ -27,7 +27,7 @@ app.use((error: Error, req: Request, resp: Response, next: NextFunction) => {
   return resp.status(500).json({ status: 'error', message: 'Internal error.' });
 });
 
-const port = process.env.APP_PORT || 3333;
+const port = process.env.PORT || 3333;
 
 app.listen(port, () => {
   console.log(`Server started in ${process.env.APP_URL}:${port}`);
