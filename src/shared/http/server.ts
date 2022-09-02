@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
+import httpClass from "http";
 import routes from './routes';
 import AppError from '../../shared/errors/AppError';
 import {errors} from 'celebrate'
@@ -11,6 +12,8 @@ import '../../config/ormconfig';
 dotenv.config();
 
 const app = express();
+const http = httpClass.createServer(app);
+
 app.use(cors());
 app.use(express.json());
 app.use(routes);
@@ -28,6 +31,6 @@ app.use((error: Error, req: Request, resp: Response, next: NextFunction) => {
 
 const port = process.env.PORT || 3333;
 
-app.listen(port, () => {
-  console.log(`Server started in http://localhost:${port}`);
+http.listen(port, () => {
+  console.log(`Server started in ${process.env.APP_URL}:${port}`);
 });
