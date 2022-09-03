@@ -24,4 +24,8 @@ stepsRouter.delete('/',
 celebrate({ [Segments.BODY]: { step_id: Joi.string().uuid().required() } }),
 stepsController.delete);
 
+stepsRouter.patch('/',
+celebrate({ [Segments.BODY]: { step_id: Joi.string().uuid().required(), content: Joi.string().required() } }),
+stepsController.update);
+
 export default stepsRouter;
