@@ -33,7 +33,6 @@ class StepsController {
   }
 
   public async update(req: Request, resp: Response): Promise<Response> {
-    console.log(req.body);
     const {step_id, content} = req.body;
     const updateStep = new UpdateStepService();
     const step = await updateStep.execute({user_id: req.user.id, step_id: step_id as string, content});
