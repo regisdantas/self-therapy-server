@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import CreateStepService from '../services/CreateStepService';
 import ListStepsService from '../services/ListStepsService';
+import DeleteStepService from '../services/DeleteStepService'
 
 class StepsController {
   public async list(req: Request, resp: Response): Promise<Response> {
@@ -21,6 +22,13 @@ class StepsController {
       content,
     });
     return resp.json(step);
+  }
+
+  public async delete(req: Request, resp: Response): Promise<Response> {
+    const {step_id} = req.body;
+    const deleteSteps = new DeleteStepService();
+    await deleteSteps.execute({user_id: req.user.id, step_id: step_id as string});
+    return resp.json({message: "Step removed"});
   }
 }
 

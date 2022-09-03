@@ -8,8 +8,8 @@ const stepsController = new StepsController();
 stepsRouter.post('/',
 celebrate({
   [Segments.BODY]: {
-    project_id: Joi.string().required(),
-    parent_id: Joi.string(),
+    project_id: Joi.string().uuid().required(),
+    parent_id: Joi.string().uuid().required(),
     type: Joi.string().required(),
     content: Joi.string()
   }
@@ -19,5 +19,9 @@ stepsController.create);
 stepsRouter.get('/',
 celebrate({ [Segments.QUERY]: { project_id: Joi.string().uuid().required() } }),
 stepsController.list);
+
+stepsRouter.delete('/',
+celebrate({ [Segments.BODY]: { step_id: Joi.string().uuid().required() } }),
+stepsController.delete);
 
 export default stepsRouter;

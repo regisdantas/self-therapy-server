@@ -24,12 +24,12 @@ class CreateStepService {
     if (!userExist) {
       throw new AppError('User does not exist.');
     }
-    const projectExist = ProjectsRepo.findById(project_id);
+    const projectExist = ProjectsRepo.findById(user_id, project_id);
     if (!projectExist) {
       throw new AppError('Project does not exist.');
     }
     if (parent_id !== null) {
-      const parentExist = StepsRepo.findById(parent_id);
+      const parentExist = StepsRepo.findById(user_id, parent_id);
       if (!parentExist) {
         throw new AppError('Parent does not exist.');
       }
