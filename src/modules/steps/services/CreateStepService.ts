@@ -34,6 +34,7 @@ class CreateStepService {
         throw new AppError('Parent does not exist.');
       }
     }
+    if (content===null || content===undefined) content='';
     const step = await StepsRepo.create({
       user_id,
       project_id,

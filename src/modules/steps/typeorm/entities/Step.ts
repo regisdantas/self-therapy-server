@@ -22,7 +22,7 @@ class Step {
   @Column()
   type: string;
 
-  @Column({nullable: true, type: 'varchar'})
+  @Column()
   content: string;
 
   @CreateDateColumn()
